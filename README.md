@@ -1,3 +1,3 @@
 # hackheroes
 Hackheroes prołdżekt
-tak
+10.10.2020 -> 25.10.2020
