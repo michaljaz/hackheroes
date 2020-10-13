@@ -1,0 +1,20 @@
+{
+  "scripts": {
+    "start": "expo start",
+    "gitignore": "node gitignore"
+  },
+  "dependencies": {
+    "expo": "~39.0.0",
+    "fs": "0.0.1-security",
+    "react": "~16.13.0",
+    "react-dom": "~16.13.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.2.tar.gz",
+    "react-native-gesture-handler": "^1.8.0",
+    "react-native-paper": "^4.2.0",
+    "react-native-web": "0.13.13",
+    "react-navigation": "^4.4.2"
+  },
+  "devDependencies": {
+    "@babel/core": "7.9.0"
+  }
+}
