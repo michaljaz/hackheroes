@@ -14,7 +14,7 @@ def get_data_per_site(number):
 def get_data():
 	lista=[]
 	for i in range(min_page,max_page+1):
-		print("Parsing page number "+str(i)+"/"+str(max_page))
+		print("["+str(i)+"/"+str(max_page)+"]")
 		lista_site=get_data_per_site(i)
 		for j in lista_site:
 			lista.append(j)
