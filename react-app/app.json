@@ -1,9 +1,0 @@
-{
-  "expo": {
-    "name": "Zdrowie",
-    "slug": "zdrowie-app",
-    "android": {
-      "package": "pl.hackheroes.mmm"
-    }
-  }
-}

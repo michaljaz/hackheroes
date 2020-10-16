@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "Senior Plus",
+    "slug": "senior-plus",
+    "android": {
+      "package": "pl.hackheroes.mmm"
+    },
+    "splash": {
+      "image": "./assets/seniorPlus.png"
+    }
+  }
+}
