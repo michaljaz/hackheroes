@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons  } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 function HomeScreen() {
@@ -12,7 +13,23 @@ function HomeScreen() {
   );
 }
 
+function ContactScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Kkontakt!</Text>
+    </View>
+  );
+}
+
 function SettingsScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Settings!</Text>
+    </View>
+  );
+}
+
+function MedicineScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Settings!</Text>
@@ -31,19 +48,31 @@ export default function App() {
             if (route.name === 'Home') {
               return (
                 <Ionicons
-                  name={
-                    focused
-                      ? 'ios-information-circle'
-                      : 'ios-information-circle-outline'
-                  }
+                  name={focused ? 'ios-home' : 'ios-home'}
                   size={size}
                   color={color}
                 />
               );
-            } else if (route.name === 'Settings') {
+            }else if (route.name === 'Kontakt') {
               return (
                 <Ionicons
-                  name={focused ? 'ios-list-box' : 'ios-list'}
+                  name={focused ? 'ios-text' : 'ios-text'}
+                  size={size}
+                  color={color}
+                />
+              );
+            } else if (route.name === 'Ustawienia') {
+              return (
+                <Ionicons
+                  name={focused ? 'ios-settings' : 'ios-settings'}
+                  size={size}
+                  color={color}
+                />
+              );
+            } else if (route.name === 'Leki') {
+              return (
+                <Ionicons
+                  name={focused ? 'ios-medkit' : 'ios-medkit'}
                   size={size}
                   color={color}
                 />
@@ -56,9 +85,12 @@ export default function App() {
           inactiveTintColor: 'gray',
         }}
       >
-        <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarBadge: 3 }} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen name="Leki" component={MedicineScreen} />
+        <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarBadge: 0 }} />
+        <Tab.Screen name="Kontakt" component={ContactScreen} />
+        <Tab.Screen name="Ustawienia" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
+
