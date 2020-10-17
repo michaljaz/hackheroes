@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "start": "expo start",
-    "gitignore": "node gitignore"
+    "start": "expo start"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
