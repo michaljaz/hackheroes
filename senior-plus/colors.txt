@@ -1,0 +1,11 @@
+#016ecd	(1,110,205)
+#4aafcd	(74,175,205)
+#5ab75c	(90,183,92)
+#faa632	(250,166,50)
+#da4f4a	(218,79,74)
+#DD0000 - piękny czerowny
+#00BB00 - piękny zielony
+#007EFE - piękny niebieski
+#FEF601 - piękny żółty
+
+
