@@ -18,8 +18,6 @@ import MedicineScreen from './src/MedicineScreen';
 import SettingsScreen from './src/SettingsScreen';
 import ContactScreen from './src/ContactScreen';
 
-import LoginScreen from './src/LoginScreen';
-
 const Tab = createBottomTabNavigator();
 
 // zwraca nam dolną nawigację apliacji
@@ -67,7 +65,6 @@ export default function App() {
 
 
     const onSmth = () => {
-      LoginScreen;
       setShowRealApp(true);
       
     };
