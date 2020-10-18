@@ -43,7 +43,7 @@ export default function App() {
     const renderNextButton = () => {
       return (
         <View style={stylesSlider.buttonNext}>
-          <Ionicons name={'ios-arrow-dropright-circle'} size='40px' color="black" />
+          <Ionicons name={'ios-arrow-dropright-circle'} size={40} color="black" />
         </View>
       );
     };
@@ -51,7 +51,7 @@ export default function App() {
     const renderDoneButton = () => {
       return (
         <View style={stylesSlider.buttonNext}>
-          <Ionicons name={'ios-checkmark-circle'} size='40px' color='black'/>
+          <Ionicons name={'ios-checkmark-circle'} size={40} color='black'/>
         </View>
       );
     };
