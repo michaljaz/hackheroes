@@ -24,10 +24,11 @@ const Tab = createBottomTabNavigator();
 // zwraca nam dolną nawigację apliacji
 function bottomNav() {
   return(<SafeAreaProvider ><NavigationContainer>
-    <Tab.Navigator
+    <Tab.Navigator 
+      initialRouteName="Dom"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          if (route.name === 'Home') {
+          if (route.name === 'Dom') {
             return (
               <Ionicons name={'ios-home'} size={size} color={color}/>
             );
@@ -47,12 +48,12 @@ function bottomNav() {
         },
       })}
       tabBarOptions={{
-        activeTintColor: 'tomato',
-        inactiveTintColor: 'gray',
+        activeTintColor: '#DD0000',
+        inactiveTintColor: '#333333',
       }}
     >
       <Tab.Screen name="Leki" component={MedicineScreen} />
-      <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarBadge: 0 }} />
+      <Tab.Screen name="Dom" component={HomeScreen} options={{ tabBarBadge: 0 }} />
       <Tab.Screen name="Kontakt" component={ContactScreen} />
       <Tab.Screen name="Ustawienia" component={SettingsScreen} />
     </Tab.Navigator>
