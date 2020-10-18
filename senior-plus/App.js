@@ -20,10 +20,6 @@ import SettingsScreen from './src/SettingsScreen';
 import ContactScreen from './src/ContactScreen';
 
 
-
-
-
-
 const Tab = createBottomTabNavigator();
 
 // zwraca nam dolną nawigację apliacji
@@ -34,19 +30,19 @@ function bottomNav() {
         tabBarIcon: ({ focused, color, size }) => {
           if (route.name === 'Home') {
             return (
-              <Ionicons name={focused ? 'ios-home' : 'ios-home'} size={size} color={color}/>
+              <Ionicons name={'ios-home'} size={size} color={color}/>
             );
           }else if (route.name === 'Kontakt') {
             return (
-              <Ionicons name={focused ? 'ios-text' : 'ios-text'} size={size} color={color}/>
+              <Ionicons name={'ios-text'} size={size} color={color}/>
             );
           } else if (route.name === 'Ustawienia') {
             return (
-              <Ionicons name={focused ? 'ios-settings' : 'ios-settings'} size={size} color={color} />
+              <Ionicons name={'ios-settings'} size={size} color={color} />
             );
           } else if (route.name === 'Leki') {
             return (
-              <Ionicons name={focused ? 'ios-medkit' : 'ios-medkit'} size={size} color={color} />
+              <Ionicons name={'ios-medkit'} size={size} color={color} />
             );
           }
         },
@@ -97,7 +93,7 @@ export default function App() {
         bottomNav()
       ) : (
         <AppIntroSlider
-        renderItem={renderItem} 
+        renderItem={renderItem}
         data={slides}
         onDone={onSmth}
         activeDotStyle={{
@@ -109,10 +105,6 @@ export default function App() {
       </>
     );
 }
-
-
-
-
 
 
 const stylesSlider = StyleSheet.create({
@@ -138,12 +130,13 @@ const stylesSlider = StyleSheet.create({
 // dodamy na sam koniec, jak będzie dzialało
 // dodam to ~cuper
 // -----------------------------------------------
+
 const slides = [
     {
       key: '1',
       title: 'Witaj w Senior+',
       text: 'Description.\nSay something cool',
-      image: require('../senior-plus/s1.jpg'),
+      image: require('./assets/s1.jpg'),
       imageStyle: stylesSlider.image,
       backgroundColor: '#007EFE',
     },
@@ -151,7 +144,7 @@ const slides = [
       key: '2',
       title: 'Title 2',
       text: 'Other cool stuff',
-      image: require('../senior-plus/s1.jpg'),
+      image: require('./assets/s1.jpg'),
       imageStyle: stylesSlider.image,
       backgroundColor: '#febe29',
     },
@@ -159,7 +152,7 @@ const slides = [
       key: '3',
       title: 'Rocket guy',
       text: 'I\'m already out of descriptions\n\nLorem ipsum bla bla bla',
-      image: require('../senior-plus/s1.jpg'),
+      image: require('./assets/s1.jpg'),
       imageStyle: stylesSlider.image,
       backgroundColor: '#da4f4a',
     }
