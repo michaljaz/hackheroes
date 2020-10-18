@@ -18,6 +18,7 @@ import MedicineScreen from './src/MedicineScreen';
 import SettingsScreen from './src/SettingsScreen';
 import ContactScreen from './src/ContactScreen';
 
+import LoginScreen from './src/LoginScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -66,7 +67,9 @@ export default function App() {
 
 
     const onSmth = () => {
+      LoginScreen;
       setShowRealApp(true);
+      
     };
 
     // renderowanie karty do wstępu do apliakcji
@@ -90,7 +93,7 @@ export default function App() {
     // przycisk do przesunięcia dale
     const renderNextButton = () => {
       return (
-        <View style={stylesSlider.buttonNext}>
+        <View >
           <Ionicons name={'ios-arrow-dropright-circle'} size='40px' color="black" />
         </View>
       );
@@ -99,7 +102,7 @@ export default function App() {
     // przycisk do zatwierdzenie
     const renderDoneButton = () => {
       return (
-        <View style={stylesSlider.buttonNext}>
+        <View >
           <Ionicons name={'ios-checkmark-circle'} size='40px' color='black'/>
         </View>
       );
