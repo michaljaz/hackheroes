@@ -1,10 +1,23 @@
 import React from 'react';
 import {View,Text,StyleSheet} from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+const Stack = createStackNavigator();
 
 export default function HomeScreen() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Przykładowy bottom-tab</Text>
-      </View>
-    );
+  return (
+    <Stack.Navigator>
+    <Stack.Screen
+      name="Home"
+      component={content}
+      options={{ title: 'Home' }}
+    />
+  </Stack.Navigator>
+  );
+}
+function content() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home</Text>
+    </View>
+  );
 }

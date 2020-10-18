@@ -10,9 +10,8 @@ import { Ionicons  } from '@expo/vector-icons'; // ikonkki
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; // dolne menu nawigacja
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'; // by nie ucinało
-
-//import {slides,style} from './src/introSlider';
 import AppIntroSlider from 'react-native-app-intro-slider'; // sliderek do tutorialu
+//import {slides,style} from './src/introSlider';
 
 import HomeScreen from './src/HomeScreen';
 import MedicineScreen from './src/MedicineScreen';

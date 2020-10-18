@@ -1,11 +1,23 @@
 import React from 'react';
 import {View,Text,StyleSheet} from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+const Stack = createStackNavigator();
 
 export default function MedicineScreen() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Settings!</Text>
-      </View>
-    );
-  }
-
+  return (
+    <Stack.Navigator>
+    <Stack.Screen
+      name="Home"
+      component={content}
+      options={{ title: 'Leki' }}
+    />
+  </Stack.Navigator>
+  );
+}
+function content() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Leki</Text>
+    </View>
+  );
+}
