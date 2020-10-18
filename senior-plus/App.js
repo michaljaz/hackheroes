@@ -52,10 +52,10 @@ function bottomNav() {
         inactiveTintColor: '#333333',
       }}
     >
-      <Tab.Screen name="Leki" component={MedicineScreen} />
-      <Tab.Screen name="Dom" component={HomeScreen} options={{ tabBarBadge: 0 }} />
-      <Tab.Screen name="Kontakt" component={ContactScreen} />
-      <Tab.Screen name="Ustawienia" component={SettingsScreen} />
+      <Tab.Screen name="Leki" component={MedicineScreen} options={{ tabBarBadge: null }} />
+      <Tab.Screen name="Dom" component={HomeScreen} options={{ tabBarBadge: null }} />
+      <Tab.Screen name="Kontakt" component={ContactScreen} options={{ tabBarBadge: null }} />
+      <Tab.Screen name="Ustawienia" component={SettingsScreen} options={{ tabBarBadge: null }} />
     </Tab.Navigator>
   </NavigationContainer></SafeAreaProvider>
   );
@@ -72,7 +72,7 @@ export default function App() {
     // renderowanie karty do wstępu do apliakcji
     const renderItem = ({ item }) => {
       return (
-        <SafeAreaProvider><View style={{
+        <SafeAreaProvider ><View style={{
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
@@ -87,6 +87,24 @@ export default function App() {
     };
 
 
+    // przycisk do przesunięcia dale
+    const renderNextButton = () => {
+      return (
+        <View style={stylesSlider.buttonNext}>
+          <Ionicons name={'ios-arrow-dropright-circle'} size='40px' color="black" />
+        </View>
+      );
+    };
+
+    // przycisk do zatwierdzenie
+    const renderDoneButton = () => {
+      return (
+        <View style={stylesSlider.buttonNext}>
+          <Ionicons name={'ios-checkmark-circle'} size='40px' color='black'/>
+        </View>
+      );
+    };
+
     return (
       <>
       {showRealApp ? (
@@ -96,10 +114,12 @@ export default function App() {
         renderItem={renderItem}
         data={slides}
         onDone={onSmth}
-        activeDotStyle={{
+        renderNextButton={renderNextButton}
+        renderDoneButton={renderDoneButton}
+        /*activeDotStyle={{
           backgroundColor:"#21465b",
           width:30
-        }}
+        }}*/
       />
       )}
       </>
@@ -119,6 +139,12 @@ const stylesSlider = StyleSheet.create({
     fontSize: 22,
     color: 'white',
     textAlign: 'center',
+  },
+  buttonNext: {
+    backgroundColor: undefined,
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
