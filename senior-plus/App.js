@@ -23,7 +23,7 @@ const Tab = createBottomTabNavigator();
 // zwraca nam dolną nawigację apliacji
 function bottomNav() {
   return(<SafeAreaProvider ><NavigationContainer>
-    <Tab.Navigator 
+    <Tab.Navigator
       initialRouteName="Dom"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
@@ -66,7 +66,7 @@ export default function App() {
 
     const onSmth = () => {
       setShowRealApp(true);
-      
+
     };
 
     // renderowanie karty do wstępu do apliakcji
@@ -91,7 +91,7 @@ export default function App() {
     const renderNextButton = () => {
       return (
         <View >
-          <Ionicons name={'ios-arrow-dropright-circle'} size='40px' color="black" />
+          <Ionicons name={'ios-arrow-dropright-circle'} size={40} color="black" />
         </View>
       );
     };
@@ -100,7 +100,7 @@ export default function App() {
     const renderDoneButton = () => {
       return (
         <View >
-          <Ionicons name={'ios-checkmark-circle'} size='40px' color='black'/>
+          <Ionicons name={'ios-checkmark-circle'} size={40} color='black'/>
         </View>
       );
     };
