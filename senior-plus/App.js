@@ -13,6 +13,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; // dol
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'; // by nie ucinało
 import AppIntroSlider from 'react-native-app-intro-slider'; // sliderek do tutorialu
 import {slides,stylesSlider} from './src/introSlider';
+import { Ionicons  } from '@expo/vector-icons'; // ikonkki
 
 import Panel from './src/Panel';
 
@@ -38,6 +39,23 @@ export default function App() {
         </View></SafeAreaProvider>
       );
     };
+    // przycisk do przesunięcia dale
+    const renderNextButton = () => {
+      return (
+        <View style={stylesSlider.buttonNext}>
+          <Ionicons name={'ios-arrow-dropright-circle'} size='40px' color="black" />
+        </View>
+      );
+    };
+    // przycisk do zatwierdzenie
+    const renderDoneButton = () => {
+      return (
+        <View style={stylesSlider.buttonNext}>
+          <Ionicons name={'ios-checkmark-circle'} size='40px' color='black'/>
+        </View>
+      );
+    };
+
 
     if(showRealApp){
       return (
@@ -49,6 +67,8 @@ export default function App() {
           renderItem={renderItem}
           data={slides}
           onDone={onSmth}
+          renderDoneButton={renderDoneButton}
+          renderNextButton={renderDoneButton}
           activeDotStyle={{
             backgroundColor:"#21465b",
             width:30
