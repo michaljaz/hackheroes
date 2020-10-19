@@ -9,7 +9,7 @@ var state={
   email:""
 }
 function rejestracja(){
-  fetch(`http://192.168.1.101:3000/register/?password=${state.password}&email=${state.email}`)
+  fetch(`http://192.168.1.111:3000/register/?password=${state.password}&email=${state.email}`)
       .then((response) => response.json())
       .then((json) => {
         if(json.resp=="ok"){
@@ -20,7 +20,7 @@ function rejestracja(){
       })
 }
 
-export default function LoginScreen({navigation}){
+export default function RegisterScreen({navigation}){
   return (
     <View style={styles.container}>
         <View style={styles.logo}>
@@ -45,56 +45,87 @@ export default function LoginScreen({navigation}){
             state.password=text;
           }}/>
       </View>
+      
       <TouchableOpacity style={styles.loginBtn} onPress={rejestracja}>
         <Text style={styles.loginText}>Dalej</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{navigation.replace("Logowanie")}}>
-        <Text style={styles.loginText}>Zaloguj się{`\n\n\n`}</Text>
+      <TouchableOpacity style={styles.loginBtnD} onPress={()=>{navigation.replace("Logowanie")}}>
+        <Text style={styles.loginTextD}>Zaloguj się</Text>
       </TouchableOpacity>
     </View>
   )
 }
 const styles = StyleSheet.create({
-    container: {
+  container: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    
+  },
+  logo:{
       flex: 1,
-      backgroundColor: '#4aafcd',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    logo:{
-        flex: 1
-    },
-    inputView:{
-      width:"80%",
-      backgroundColor:"#007EFE",
-      borderRadius:25,
-      height:50,
-      marginBottom:20,
-      justifyContent:"center",
-      padding:20
-    },
-    inputText:{
-      height:50,
-      color:"white"
-    },
-    forgot:{
-      color:"white",
-      fontSize:11
-    },
-    loginBtn:{
-      width:"80%",
-      backgroundColor:"#DD0000",
-      borderRadius:25,
-      height:50,
-      alignItems:"center",
-      justifyContent:"center",
-      marginTop:40,
-      marginBottom:10
-    },
-    loginText:{
-      color:"white"
-    },
-    block:{
-        fontSize:50
-    }
-  });
+      top: '5%',
+      color: '#444444',
+  },
+  inputView:{
+    width:"80%",
+    backgroundColor:"#ffffff",
+    borderRadius:25,
+    borderColor: '#eeeeee',
+    borderWidth: 1,
+    marginBottom: 30,
+    height:60,
+    justifyContent:"center",
+    padding:20,
+
+    shadowColor: "#000000",
+    shadowOffset: {width: 0,height: 0},
+    shadowOpacity: 0.3,
+    shadowRadius: 7,
+    elevation: 10,
+  },
+  inputText:{
+    height:50,
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: "#444444"
+  },
+  forgot:{
+    color:"#444444",
+    fontSize: 15,
+    marginTop: -15,
+    marginBottom: '8%',
+  },
+  loginBtn:{
+    width:"60%",
+    backgroundColor:"#399fff",
+    borderRadius:25,
+    height:60,
+    alignItems:"center",
+    justifyContent:"center",
+    marginBottom: 20,
+  },
+  loginBtnD:{
+    width:"60%",
+    backgroundColor:"#ff5959",
+    borderRadius:25,
+    height:50,
+    alignItems:"center",
+    justifyContent:"center",
+    marginBottom: '14%',
+  },
+  loginText:{
+    fontWeight: 'bold',
+    color:"#444444",
+    fontSize: 24,
+  },
+  loginTextD:{
+    fontWeight: 'bold',
+    color:"#444444",
+    fontSize: 18,
+  },
+  block:{
+      fontSize:50,
+  }
+});

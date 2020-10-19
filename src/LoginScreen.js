@@ -27,18 +27,6 @@ function zaloguj(navigation){
 export default function LoginScreen({navigation}){
   return (
     <View style={styles.container}>
-      <LinearGradient
-      colors={['#ff8ef7', '#ff7171']}
-      start={{x:0,y:0}}
-      end={{x:1,y:1}}
-      style={{
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 0,
-        height: '100%',
-      }}
-      />
       <View style={styles.logo}>
         <Image
             source={require('../assets/seniorPlus.png')}
@@ -48,7 +36,7 @@ export default function LoginScreen({navigation}){
         <TextInput
           style={styles.inputText}
           placeholder="Email..."
-          placeholderTextColor="#003f5c"
+          placeholderTextColor="#444444"
           onChangeText={text => {state.email=text}}/>
       </View>
       <View style={styles.inputView} >
@@ -56,7 +44,7 @@ export default function LoginScreen({navigation}){
           secureTextEntry
           style={styles.inputText}
           placeholder="Hasło..."
-          placeholderTextColor="#003f5c"
+          placeholderTextColor="#444444"
           onChangeText={text => {
             state.password=text;
           }}/>
@@ -67,9 +55,10 @@ export default function LoginScreen({navigation}){
       <TouchableOpacity style={styles.loginBtn} onPress={()=>{zaloguj(navigation)}}>
         <Text style={styles.loginText}>Zaloguj</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{navigation.replace("Rejestracja")}}>
-        <Text style={styles.loginText}>Nie mam jeszcze konta{`\n\n\n`}</Text>
+      <TouchableOpacity style={styles.loginBtnD} onPress={()=>{navigation.replace("Rejestracja")}}>
+        <Text style={styles.loginTextD}>Nie mam jeszcze konta</Text>
       </TouchableOpacity>
+      
     </View>
   )
 }
@@ -79,44 +68,71 @@ const styles = StyleSheet.create({
       backgroundColor: '#ffffff',
       alignItems: 'center',
       justifyContent: 'center',
+      
     },
     logo:{
         flex: 1,
-        top: '5%'
+        top: '5%',
+        color: '#444444',
     },
     inputView:{
       width:"80%",
-      backgroundColor:"#007EFE",
+      backgroundColor:"#ffffff",
       borderRadius:25,
-      height:50,
-      marginBottom:20,
+      borderColor: '#eeeeee',
+      borderWidth: 1,
+      marginBottom: 30,
+      height:60,
       justifyContent:"center",
-      padding:20
+      padding:20,
+
+      shadowColor: "#000000",
+      shadowOffset: {width: 0,height: 0},
+      shadowOpacity: 0.3,
+      shadowRadius: 7,
+      elevation: 10,
     },
     inputText:{
       height:50,
       fontWeight: 'bold',
-      color:"white"
+      fontSize: 20,
+      color: "#444444"
     },
     forgot:{
-      color:"white",
-      fontSize:11
+      color:"#444444",
+      fontSize: 15,
+      marginTop: -15,
+      marginBottom: '8%',
     },
     loginBtn:{
-      width:"80%",
-      backgroundColor:"#DD0000",
+      width:"60%",
+      backgroundColor:"#399fff",
+      borderRadius:25,
+      height:60,
+      alignItems:"center",
+      justifyContent:"center",
+      marginBottom: 20,
+    },
+    loginBtnD:{
+      width:"60%",
+      backgroundColor:"#ff5959",
       borderRadius:25,
       height:50,
       alignItems:"center",
       justifyContent:"center",
-      marginTop:40,
-      marginBottom:10
+      marginBottom: '14%',
     },
     loginText:{
       fontWeight: 'bold',
-      color:"white"
+      color:"#444444",
+      fontSize: 24,
+    },
+    loginTextD:{
+      fontWeight: 'bold',
+      color:"#444444",
+      fontSize: 18,
     },
     block:{
-        fontSize:50
+        fontSize:50,
     }
   });
