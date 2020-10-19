@@ -8,6 +8,7 @@ import {
   Button
 } from 'react-native';
 
+import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; // dolne menu nawigacja
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'; // by nie ucinało
@@ -15,35 +16,33 @@ import AppIntroSlider from 'react-native-app-intro-slider'; // sliderek do tutor
 import {slides,stylesSlider} from './src/introSlider';
 import { Ionicons  } from '@expo/vector-icons'; // ikonkki
 
-import LoginScreen from './src/LoginScreen';
+import Logowanie from './src/Logowanie'
+
+const Stack = createStackNavigator();
 
 import Panel from './src/Panel';
-import { render } from 'react-dom';
 
 export default function App() {
     const [showRealApp , setShowRealApp] = useState(false);
-    const onSmth = () => {
+    const onSmth = ({navigation}) => {
       setShowRealApp(true);
     };
 
     // renderowanie karty do wstępu do apliakcji
     const renderItem = ({ item }) => {
-      if(item.key=='login_form') {
-        return(<LoginScreen></LoginScreen>);
-      } else { return (
-          <SafeAreaProvider><View style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            paddingBottom: 96,
-            backgroundColor: item.backgroundColor,
-            }}>
-            <Text style={stylesSlider.title}>{item.title}</Text>
-            <Image source={item.image} style={stylesSlider.image} />
-            <Text style={stylesSlider.text}>{item.text}</Text>
-          </View></SafeAreaProvider>
-        );
-      }
+      return (
+        <SafeAreaProvider><View style={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+          paddingBottom: 96,
+          backgroundColor: item.backgroundColor,
+          }}>
+          <Text style={stylesSlider.title}>{item.title}</Text>
+          <Image source={item.image} style={stylesSlider.image} />
+          <Text style={stylesSlider.text}>{item.text}</Text>
+        </View></SafeAreaProvider>
+      );
     };
     // przycisk do przesunięcia dale
     const renderNextButton = () => {
@@ -65,7 +64,12 @@ export default function App() {
 
     if(showRealApp){
       return (
-        Panel()
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="Logowanie" component={Logowanie} />
+            <Stack.Screen name="Panel" component={Panel} />
+          </Stack.Navigator>
+        </NavigationContainer>
       )
     }else{
       return (
