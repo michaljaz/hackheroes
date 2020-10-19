@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import {StyleSheet,Text,TextInput,TouchableOpacity,View,Image} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { LinearGradient } from 'expo-linear-gradient';
+
 const Stack = createStackNavigator();
 
 var state={
@@ -25,6 +27,18 @@ function zaloguj(navigation){
 export default function LoginScreen({navigation}){
   return (
     <View style={styles.container}>
+      <LinearGradient
+      colors={['#ff8ef7', '#ff7171']}
+      start={{x:0,y:0}}
+      end={{x:1,y:1}}
+      style={{
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        height: '100%',
+      }}
+      />
       <View style={styles.logo}>
         <Image
             source={require('../assets/seniorPlus.png')}
@@ -51,7 +65,7 @@ export default function LoginScreen({navigation}){
         <Text style={styles.forgot}>Zapomniałeś hasła?</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.loginBtn} onPress={()=>{zaloguj(navigation)}}>
-        <Text style={styles.loginText}>Dalej</Text>
+        <Text style={styles.loginText}>Zaloguj</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={()=>{navigation.replace("Rejestracja")}}>
         <Text style={styles.loginText}>Nie mam jeszcze konta{`\n\n\n`}</Text>
@@ -62,12 +76,13 @@ export default function LoginScreen({navigation}){
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#4aafcd',
+      backgroundColor: '#ffffff',
       alignItems: 'center',
       justifyContent: 'center',
     },
     logo:{
-        flex: 1
+        flex: 1,
+        top: '5%'
     },
     inputView:{
       width:"80%",
@@ -80,6 +95,7 @@ const styles = StyleSheet.create({
     },
     inputText:{
       height:50,
+      fontWeight: 'bold',
       color:"white"
     },
     forgot:{
@@ -97,6 +113,7 @@ const styles = StyleSheet.create({
       marginBottom:10
     },
     loginText:{
+      fontWeight: 'bold',
       color:"white"
     },
     block:{
