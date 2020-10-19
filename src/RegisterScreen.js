@@ -9,15 +9,16 @@ var state={
   email:""
 }
 function rejestracja(){
-  fetch(`https://senior-plus.fly.dev/register/?password=${state.password}&email=${state.email}`)
+  fetch(`http://192.168.1.111:3000/register/?password=${state.password}&email=${state.email}`)
       .then((response) => response.json())
       .then((json) => {
         if(json.resp=="ok"){
-          alert("Zarejestrowano")
+          alert("Rejestracja przebiegła pomyślnie!")
         }else{
-          alert("Użytkownik już istnieje")
+          alert("Użytkownik już istnieje!")
         }
-      })
+      },
+      (error) => { alert("Błąd!")})
 }
 
 export default function RegisterScreen({navigation}){

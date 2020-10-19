@@ -1,26 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState,Alert } from 'react';
 import {StyleSheet,Text,TextInput,TouchableOpacity,View,Image} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { LinearGradient } from 'expo-linear-gradient';
-
 const Stack = createStackNavigator();
 
 var state={
   password:"",
   email:""
 }
+
 function zaloguj(navigation){
-  fetch(`https://senior-plus.fly.dev/login/?password=${state.password}&email=${state.email}`)
+  fetch(`http://192.168.1.111:3000/login/?password=${state.password}&email=${state.email}`)
       .then((response) => response.json())
       .then((json) => {
         if(json.resp=="ok"){
-          alert("Zalogowano")
           navigation.replace("Panel")
         }else{
-          alert("Złe hasło")
+          alert("Zły login i/lub hasło!")
         }
-      })
+      },
+      (error) => { alert("Błąd!")}
+      )
 }
 
 
