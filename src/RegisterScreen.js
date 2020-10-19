@@ -13,11 +13,12 @@ function rejestracja(){
       .then((response) => response.json())
       .then((json) => {
         if(json.resp=="ok"){
-          alert("Zarejestrowano")
+          alert("Rejestracja przebiegła pomyślnie!")
         }else{
-          alert("Użytkownik już istnieje")
+          alert("Użytkownik już istnieje!")
         }
-      })
+      },
+      (error) => { alert("Błąd!")})
 }
 
 export default function RegisterScreen({navigation}){
