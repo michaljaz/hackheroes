@@ -9,6 +9,7 @@ export const stylesSlider = StyleSheet.create({
     marginTop: 32,
   },
   title: {
+    top: '3%',
     fontSize: 22,
     color: 'white',
     textAlign: 'center',
