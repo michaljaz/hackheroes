@@ -25,18 +25,18 @@ class LoginScreen extends React.Component{
               <TextInput
                 secureTextEntry
                 style={styles.inputText}
-                placeholder="Password..."
+                placeholder="Hasło..."
                 placeholderTextColor="#003f5c"
                 onChangeText={text => this.setState({password:text})}/>
             </View>
             <TouchableOpacity>
-              <Text style={styles.forgot}>Forgot Password?</Text>
+              <Text style={styles.forgot}>Zapomniałeś hasła?</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.loginBtn}>
-              <Text style={styles.loginText}>LOGIN</Text>
+              <Text style={styles.loginText}>Zaloguj się</Text>
             </TouchableOpacity>
             <TouchableOpacity>
-        <Text style={styles.loginText}>Signup{`\n\n\n`}</Text>
+        <Text style={styles.loginText}>Zarejestruj się{`\n\n\n`}</Text>
             </TouchableOpacity>
 
           </View>

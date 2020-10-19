@@ -15,29 +15,35 @@ import AppIntroSlider from 'react-native-app-intro-slider'; // sliderek do tutor
 import {slides,stylesSlider} from './src/introSlider';
 import { Ionicons  } from '@expo/vector-icons'; // ikonkki
 
+import LoginScreen from './src/LoginScreen';
+
 import Panel from './src/Panel';
+import { render } from 'react-dom';
 
 export default function App() {
     const [showRealApp , setShowRealApp] = useState(false);
-    const onSmth = ({navigation}) => {
+    const onSmth = () => {
       setShowRealApp(true);
     };
 
     // renderowanie karty do wstępu do apliakcji
     const renderItem = ({ item }) => {
-      return (
-        <SafeAreaProvider><View style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          paddingBottom: 96,
-          backgroundColor: item.backgroundColor,
-          }}>
-          <Text style={stylesSlider.title}>{item.title}</Text>
-          <Image source={item.image} style={stylesSlider.image} />
-          <Text style={stylesSlider.text}>{item.text}</Text>
-        </View></SafeAreaProvider>
-      );
+      if(item.key=='login_form') {
+        return(<LoginScreen></LoginScreen>);
+      } else { return (
+          <SafeAreaProvider><View style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingBottom: 96,
+            backgroundColor: item.backgroundColor,
+            }}>
+            <Text style={stylesSlider.title}>{item.title}</Text>
+            <Image source={item.image} style={stylesSlider.image} />
+            <Text style={stylesSlider.text}>{item.text}</Text>
+          </View></SafeAreaProvider>
+        );
+      }
     };
     // przycisk do przesunięcia dale
     const renderNextButton = () => {
