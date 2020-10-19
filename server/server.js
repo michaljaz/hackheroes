@@ -1,15 +1,19 @@
-const express = require("express");
-const socket = require("socket.io");
+const express = require('express')
+const app = express()
+const port = 3000
 
-const PORT = 8080;
-const app = express();
-const server = app.listen(PORT, function () {
-  console.log(`Listening on port ${PORT}`);
-  console.log(`http://localhost:${PORT}`);
-});
+app.get('/login/', (req, res) => {
+  console.log(`Użytkownik ${req.query.email} loguje się`)
+  res.json({lol:123})
+})
+app.get('/register/', (req, res) => {
+  console.log(`Użytkownik ${req.query.email} rejestruje się`)
+  res.json({ok:123})
+})
+app.get('/forgot_pwd/', (req, res) => {
+  res.send("ok")
+})
 
-const io = socket(server);
-
-io.on("connection", function (socket) {
-  console.log("Made socket connection");
-});
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
