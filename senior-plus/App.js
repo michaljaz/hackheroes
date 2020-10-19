@@ -16,7 +16,8 @@ import AppIntroSlider from 'react-native-app-intro-slider'; // sliderek do tutor
 import {slides,stylesSlider} from './src/introSlider';
 import { Ionicons  } from '@expo/vector-icons'; // ikonkki
 
-import Logowanie from './src/Logowanie'
+import LoginScreen from './src/LoginScreen'
+import RegisterScreen from './src/RegisterScreen';
 
 const Stack = createStackNavigator();
 
@@ -66,7 +67,8 @@ export default function App() {
       return (
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name="Logowanie" component={Logowanie} />
+            <Stack.Screen name="Logowanie" component={LoginScreen} />
+            <Stack.Screen name="Rejestracja" component={RegisterScreen} />
             <Stack.Screen name="Panel" component={Panel} />
           </Stack.Navigator>
         </NavigationContainer>
