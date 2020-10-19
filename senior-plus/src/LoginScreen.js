@@ -15,17 +15,17 @@ class LoginScreen extends React.Component{
               />
               </View>
             <View style={styles.inputView} >
-              <TextInput  
+              <TextInput
                 style={styles.inputText}
-                placeholder="Email..." 
+                placeholder="Email..."
                 placeholderTextColor="#003f5c"
                 onChangeText={text => this.setState({email:text})}/>
             </View>
             <View style={styles.inputView} >
-              <TextInput  
+              <TextInput
                 secureTextEntry
                 style={styles.inputText}
-                placeholder="Password..." 
+                placeholder="Password..."
                 placeholderTextColor="#003f5c"
                 onChangeText={text => this.setState({password:text})}/>
             </View>
@@ -38,11 +38,11 @@ class LoginScreen extends React.Component{
             <TouchableOpacity>
         <Text style={styles.loginText}>Signup{`\n\n\n`}</Text>
             </TouchableOpacity>
-    
+
           </View>
         )
     }
-    
+
 }
 export default LoginScreen;
 const styles = StyleSheet.create({

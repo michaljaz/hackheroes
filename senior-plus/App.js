@@ -68,7 +68,7 @@ export default function App() {
           data={slides}
           onDone={onSmth}
           renderDoneButton={renderDoneButton}
-          renderNextButton={renderDoneButton}
+          renderNextButton={renderNextButton}
           activeDotStyle={{
             backgroundColor:"#21465b",
             width:30
