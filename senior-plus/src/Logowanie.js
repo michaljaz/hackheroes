@@ -8,14 +8,28 @@ var state={
   password:"",
   email:""
 }
-export default function Logowanie({navigation}){
+function zaloguj(navigation){
+  fetch(`http://192.168.1.101:3000/login/?password=${state.password}&email=${state.email}`)
+      .then((response) => response.json())
+      .then((json) => {
+        if(json.resp=="ok"){
+          alert("Zalogowano")
+          navigation.replace("Panel")
+        }else{
+          alert("Złe hasło")
+        }
+      })
+}
+
+
+export default function LoginScreen({navigation}){
   return (
     <View style={styles.container}>
-        <View style={styles.logo}>
-          <Image
-              source={require('../assets/seniorPlus.png')}
-          />
-        </View>
+      <View style={styles.logo}>
+        <Image
+            source={require('../assets/seniorPlus.png')}
+        />
+      </View>
       <View style={styles.inputView} >
         <TextInput
           style={styles.inputText}
@@ -36,11 +50,11 @@ export default function Logowanie({navigation}){
       <TouchableOpacity>
         <Text style={styles.forgot}>Zapomniałeś hasła?</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.loginBtn} onPress={()=>{navigation.replace("Panel")}}>
-        <Text style={styles.loginText}>Zaloguj się</Text>
+      <TouchableOpacity style={styles.loginBtn} onPress={()=>{zaloguj(navigation)}}>
+        <Text style={styles.loginText}>Dalej</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={styles.loginText}>Zarejestruj się{`\n\n\n`}</Text>
+      <TouchableOpacity onPress={()=>{navigation.replace("Rejestracja")}}>
+        <Text style={styles.loginText}>Nie mam jeszcze konta{`\n\n\n`}</Text>
       </TouchableOpacity>
     </View>
   )
@@ -53,9 +67,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     logo:{
-        flex: 1,
-        width:"70%",
-        height:"30%"
+        flex: 1
     },
     inputView:{
       width:"80%",
