@@ -11,7 +11,7 @@ var state={
   email:""
 }
 function zaloguj(navigation){
-  fetch(`http://192.168.1.101:3000/login/?password=${state.password}&email=${state.email}`)
+  fetch(`https://senior-plus.fly.dev/login/?password=${state.password}&email=${state.email}`)
       .then((response) => response.json())
       .then((json) => {
         if(json.resp=="ok"){

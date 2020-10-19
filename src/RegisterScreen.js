@@ -9,7 +9,7 @@ var state={
   email:""
 }
 function rejestracja(){
-  fetch(`http://192.168.1.111:3000/register/?password=${state.password}&email=${state.email}`)
+  fetch(`https://senior-plus.fly.dev/register/?password=${state.password}&email=${state.email}`)
       .then((response) => response.json())
       .then((json) => {
         if(json.resp=="ok"){
