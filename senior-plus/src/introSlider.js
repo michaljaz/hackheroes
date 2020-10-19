@@ -46,8 +46,5 @@ export const slides = [
       image: require('../assets/s1.jpg'),
       imageStyle: stylesSlider.image,
       backgroundColor: '#da4f4a',
-    },
-    {
-      key: 'login_form'
     }
   ];
