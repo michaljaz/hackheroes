@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import {StyleSheet,Text,TextInput,TouchableOpacity,View,Image} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { LinearGradient } from 'expo-linear-gradient';
+
 const Stack = createStackNavigator();
 
 var state={
@@ -48,10 +50,10 @@ export default function RegisterScreen({navigation}){
       </View>
       
       <TouchableOpacity style={styles.loginBtn} onPress={rejestracja}>
-        <Text style={styles.loginText}>Dalej</Text>
+        <Text style={styles.loginText}>Rejestracja</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.loginBtnD} onPress={()=>{navigation.replace("Logowanie")}}>
-        <Text style={styles.loginTextD}>Zaloguj się</Text>
+        <Text style={styles.loginTextD}>Mam konto</Text>
       </TouchableOpacity>
     </View>
   )
