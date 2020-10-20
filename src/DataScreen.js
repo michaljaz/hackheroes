@@ -51,8 +51,12 @@ export default function DataScreen({navigation}){
           style={styles.inputText}
           placeholder="Wiek..."
           placeholderTextColor="#444444"
+<<<<<<< HEAD
           onChangeText={text => {state.age=text}}
           />
+=======
+        />
+>>>>>>> 8a87f6b3914c9de8a6238ac2b500d47fa0b5620b
       </View>
       <SwitchSelector
         style={styles.Switch}
@@ -111,7 +115,6 @@ const styles = StyleSheet.create({
       height:55,
       justifyContent:"center",
       padding:20,
-
       shadowColor: "#000000",
       shadowOffset: {width: 0,height: 0},
       shadowOpacity: 0.3,
