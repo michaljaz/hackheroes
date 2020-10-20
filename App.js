@@ -18,6 +18,7 @@ import { Ionicons  } from '@expo/vector-icons'; // ikonkki
 
 import LoginScreen from './src/LoginScreen'
 import RegisterScreen from './src/RegisterScreen';
+import DataScreen from './src/DataScreen';
 
 const Stack = createStackNavigator();
 
@@ -70,6 +71,7 @@ export default function App() {
             <Stack.Screen name="Logowanie" component={LoginScreen} />
             <Stack.Screen name="Rejestracja" component={RegisterScreen} />
             <Stack.Screen name="Panel" component={Panel} />
+            <Stack.Screen name="Data" component={DataScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       )

@@ -9,7 +9,7 @@ var state={
   email:""
 }
 function rejestracja(){
-  fetch(`http://192.168.1.111:3000/register/?password=${state.password}&email=${state.email}`)
+  fetch(`http://senior-plus.fly.dev/register/?password=${state.password}&email=${state.email}`)
       .then((response) => response.json())
       .then((json) => {
         if(json.resp=="ok"){
@@ -46,7 +46,7 @@ export default function RegisterScreen({navigation}){
             state.password=text;
           }}/>
       </View>
-      
+
       <TouchableOpacity style={styles.loginBtn} onPress={rejestracja}>
         <Text style={styles.loginText}>Dalej</Text>
       </TouchableOpacity>
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
-    
+
   },
   logo:{
       flex: 1,

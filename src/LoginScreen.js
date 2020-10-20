@@ -11,11 +11,11 @@ var state={
 }
 
 function zaloguj(navigation){
-  fetch(`http://192.168.1.111:3000/login/?password=${state.password}&email=${state.email}`)
+  fetch(`http://senior-plus.fly.dev/login/?password=${state.password}&email=${state.email}`)
       .then((response) => response.json())
       .then((json) => {
         if(json.resp=="ok"){
-          navigation.replace("Panel")
+          navigation.replace("Data")
         }else{
           alert("Zły login i/lub hasło!")
         }
@@ -59,7 +59,7 @@ export default function LoginScreen({navigation}){
       <TouchableOpacity style={styles.loginBtnD} onPress={()=>{navigation.replace("Rejestracja")}}>
         <Text style={styles.loginTextD}>Nie mam jeszcze konta</Text>
       </TouchableOpacity>
-      
+
     </View>
   )
 }
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#ffffff',
       alignItems: 'center',
       justifyContent: 'center',
-      
+
     },
     logo:{
         flex: 1,
