@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { LinearGradient } from 'expo-linear-gradient';
 const Stack = createStackNavigator();
+import { AsyncStorage } from 'react-native';
 
 var state={
   password:"",
@@ -11,11 +12,13 @@ var state={
 }
 
 function zaloguj(navigation){
-  fetch(`http://192.168.1.111:3000/login/?password=${state.password}&email=${state.email}`)
+  fetch(`http://senior-plus.fly.dev/login/?password=${state.password}&email=${state.email}`)
       .then((response) => response.json())
       .then((json) => {
         if(json.resp=="ok"){
-          navigation.replace("Panel")
+          AsyncStorage.setItem("email",state.email)
+          AsyncStorage.setItem("password",state.password)
+          navigation.replace("Data")
         }else{
           alert("Zły login i/lub hasło!")
         }
@@ -23,9 +26,19 @@ function zaloguj(navigation){
       (error) => { alert("Błąd!")}
       )
 }
-
-
 export default function LoginScreen({navigation}){
+
+  AsyncStorage.getItem('email').then(email=>{
+    AsyncStorage.getItem('password').then(password=>{
+      if(email==null || password==null){
+        //Nie zalogowano
+
+      }else{
+        //Zalogowano
+        navigation.replace("Panel")
+      }
+    });
+  });
   return (
     <View style={styles.container}>
       <View style={styles.logo}>
@@ -59,7 +72,7 @@ export default function LoginScreen({navigation}){
       <TouchableOpacity style={styles.loginBtnD} onPress={()=>{navigation.replace("Rejestracja")}}>
         <Text style={styles.loginTextD}>Nie mam jeszcze konta</Text>
       </TouchableOpacity>
-      
+
     </View>
   )
 }
@@ -69,7 +82,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#ffffff',
       alignItems: 'center',
       justifyContent: 'center',
-      
+
     },
     logo:{
         flex: 1,
