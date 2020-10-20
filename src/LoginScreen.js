@@ -11,7 +11,7 @@ var state={
 }
 
 function zaloguj(navigation){
-  fetch(`http://192.168.1.111:3000/login/?password=${state.password}&email=${state.email}`)
+  fetch(`http://senior-plus.fly.dev/login/?password=${state.password}&email=${state.email}`)
       .then((response) => response.json())
       .then((json) => {
         if(json.resp=="ok"){
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
       borderColor: '#eeeeee',
       borderWidth: 1,
       marginBottom: 30,
-      height:60,
+      height:55,
       justifyContent:"center",
       padding:20,
 

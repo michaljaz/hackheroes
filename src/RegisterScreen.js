@@ -11,11 +11,12 @@ var state={
   email:""
 }
 function rejestracja(){
-  fetch(`http://192.168.1.111:3000/register/?password=${state.password}&email=${state.email}`)
+  fetch(`http://senior-plus.fly.dev/register/?password=${state.password}&email=${state.email}`)
       .then((response) => response.json())
       .then((json) => {
         if(json.resp=="ok"){
-          alert("Rejestracja przebiegła pomyślnie!")
+          navigation.replace("Panel") // do testowania
+          //navigation.replace("Data")
         }else{
           alert("Użytkownik już istnieje!")
         }
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
     borderColor: '#eeeeee',
     borderWidth: 1,
     marginBottom: 30,
-    height:60,
+    height:55,
     justifyContent:"center",
     padding:20,
 

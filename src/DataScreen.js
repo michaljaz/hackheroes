@@ -3,9 +3,25 @@ import {StyleSheet,Text,TextInput,TouchableOpacity,View,Image} from 'react-nativ
 import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { LinearGradient } from 'expo-linear-gradient';
+import SwitchSelector from 'react-native-switch-selector';
+
 const Stack = createStackNavigator();
 
+var state={
+  name:"",
+  surname:"",
+  age:"",
+  type:"",
+}
+function sendData(){
+  // dopisać tutaj kod, który wysyła do serwera dane
+  console.log('działa')
+  
+}
+
+
 export default function DataScreen({navigation}){
+  const [selectedValue, setSelectedValue] = useState("java");
   return (
     <View style={styles.container}>
       <View style={styles.logo}>
@@ -16,26 +32,42 @@ export default function DataScreen({navigation}){
       <View style={styles.inputView} >
         <TextInput
           style={styles.inputText}
-          placeholder="Imię"
-          placeholderTextColor="#444444"/>
+          placeholder="Imię..."
+          placeholderTextColor="#444444"
+          onChangeText={text => {state.name=text}}/>
       </View>
 
       <View style={styles.inputView} >
         <TextInput
           style={styles.inputText}
-          placeholder="Nazwisko"
+          placeholder="Nazwisko..."
           placeholderTextColor="#444444"
+          onChangeText={text => {state.surname=text}}
           />
       </View>
 
       <View style={styles.inputView} >
         <TextInput
           style={styles.inputText}
-          placeholder="Wiek"
+          placeholder="Wiek..."
           placeholderTextColor="#444444"
+          onChangeText={text => {state.age=text}}
           />
       </View>
-      <TouchableOpacity style={styles.loginBtnD} onPress={()=>{navigation.replace("Panel")}}>
+      <SwitchSelector
+        style={styles.Switch}
+        initial={0}
+        borderColor={'#eeeeee'}
+        selectedColor={'#ffffff'}
+        buttonColor={'#2A2D40'}
+        animationDuration={200}
+        onPress={value => {state.type=value}}
+        options={[
+          { label: "Senior", value: "senior" },
+          { label: "Junior", value: "junior" }
+        ]}
+      />
+      <TouchableOpacity style={styles.loginBtnD} onPress={()=>{sendData}}>
         <Text style={styles.loginTextD}>Dalej</Text>
       </TouchableOpacity>
 
@@ -55,6 +87,20 @@ const styles = StyleSheet.create({
         top: '5%',
         color: '#444444',
     },
+    Switch:{
+      borderRadius:25,
+      borderColor: '#eeeeee',
+      borderWidth: 1,
+      marginBottom: 30,
+      justifyContent:"center",
+      width: '80%',
+
+      shadowColor: "#000000",
+      shadowOffset: {width: 0,height: 0},
+      shadowOpacity: 0.3,
+      shadowRadius: 7,
+      elevation: 10,
+    },
     inputView:{
       width:"80%",
       backgroundColor:"#ffffff",
@@ -62,7 +108,7 @@ const styles = StyleSheet.create({
       borderColor: '#eeeeee',
       borderWidth: 1,
       marginBottom: 30,
-      height:60,
+      height:55,
       justifyContent:"center",
       padding:20,
 
