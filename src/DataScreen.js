@@ -33,7 +33,7 @@ export default function DataScreen({navigation}){
           style={styles.inputText}
           placeholder="Wiek"
           placeholderTextColor="#444444"
-          />
+        />
       </View>
       <TouchableOpacity style={styles.loginBtnD} onPress={()=>{navigation.replace("Panel")}}>
         <Text style={styles.loginTextD}>Dalej</Text>
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
       height:60,
       justifyContent:"center",
       padding:20,
-
       shadowColor: "#000000",
       shadowOffset: {width: 0,height: 0},
       shadowOpacity: 0.3,
