@@ -66,7 +66,7 @@ export default function App() {
     if(showRealApp){
       return (
         <NavigationContainer>
-          <Stack.Navigator>
+          <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name="Logowanie" component={LoginScreen} />
             <Stack.Screen name="Rejestracja" component={RegisterScreen} />
             <Stack.Screen name="Panel" component={Panel} />
