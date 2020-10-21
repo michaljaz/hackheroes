@@ -70,9 +70,7 @@ function RegisterNewUser(email,password,callback){
       fs.writeFileSync(`${__dirname}/userdb/${random_uuid}.json`,JSON.stringify(data,null,4));
       callback("OK")
     }
-
   })
-
 }
 
 app.get('/login/', (req, res) => {
