@@ -9,10 +9,7 @@ git clone https://github.com/michaljaz/hackheroes
 cd hackheroes
 npm i
 
-#Uruchamianie serwera express
+#Uruchamianie aplikacji
 npm start
-
-#Uruchamianie aplikacji expo
-npm run app
 
 ```
