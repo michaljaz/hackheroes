@@ -1,0 +1,12 @@
+{
+    "dataRegistered": true,
+    "email": "test",
+    "password": "test",
+    "uuid": "9936c83b-2982-4813-aae9-5dbfa3cd9077",
+    "userInfo": {
+        "name": "Testowe",
+        "surname": "Konto",
+        "age": "9",
+        "type": "junior"
+    }
+}

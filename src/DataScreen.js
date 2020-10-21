@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { LinearGradient } from 'expo-linear-gradient';
 import SwitchSelector from 'react-native-switch-selector';
-
+import { AsyncStorage } from 'react-native';
 const Stack = createStackNavigator();
 
 var state={
@@ -13,10 +13,24 @@ var state={
   age:"",
   type:"",
 }
-function sendData(){
-  // dopisać tutaj kod, który wysyła do serwera dane
-  console.log('działa')
-  
+function sendData({navigation}){
+  AsyncStorage.getItem("email").then(email=>{
+    AsyncStorage.getItem("password").then(password=>{
+      fetch(`https://senior-plus.fly.dev/register_user_data/?password=${password}&email=${email}&name=${state.name}&surname=${state.surname}&age=${state.age}&type=${state.type}`)
+          .then((response) => response.json())
+          .then((json) => {
+            if(json.resp=="ok"){
+              navigation.replace("Panel")
+            }else if(json.resp=="no_user"){
+              alert("Twoje dane zostały już wprowadzone")
+            }else if(json.resp=="err"){
+              alert("Błąd")
+            }
+          },
+          (error) => { alert(error)}
+          )
+    })
+  })
 }
 
 
@@ -67,7 +81,7 @@ export default function DataScreen({navigation}){
           { label: "Junior", value: "junior" }
         ]}
       />
-      <TouchableOpacity style={styles.loginBtnD} onPress={()=>{sendData}}>
+      <TouchableOpacity style={styles.loginBtnD} onPress={()=>{sendData({navigation})}}>
         <Text style={styles.loginTextD}>Dalej</Text>
       </TouchableOpacity>
 

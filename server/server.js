@@ -3,15 +3,16 @@ const fs = require('fs');
 const app = express()
 const port = 3000
 
-var baza={}
-
+//Funkcja generująca losowy ciąg znaków (uuidv4)
 function uuidv4() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
     var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
     return v.toString(16);
   });
 }
-function LoadUsers(callback){
+
+//Funkcja załadowująca wszystkich użytkowników
+function loadUsers(callback){
   var result={};
   var loadFolder=`${__dirname}/userdb/`;
   fs.readdir(loadFolder, (err, files) => {
@@ -19,6 +20,10 @@ function LoadUsers(callback){
     files.forEach(file => {
       filesToLoad.push(file)
     });
+    if(filesToLoad.length==0){
+      callback({})
+      return
+    }
     var loadedFiles=0;
     for(var i=0;i<filesToLoad.length;i++){
       var file=filesToLoad[i];
@@ -36,36 +41,42 @@ function LoadUsers(callback){
     }
   });
 }
-function checkUser(email,password,callback){
-  LoadUsers((users)=>{
-    var war=true;
+
+//Funkcja szukająca użytkownika
+function findUser(email,callback){
+  var war=true;
+  loadUsers((users)=>{
     Object.keys(users).forEach((uuid)=>{
       var user=users[uuid];
-      if(user.email==email && user.password==password){
-        callback("OK");
-        war=false;
-      }
-    })
-    if(war){
-      callback("ERR")
-    }
-  })
-}
-function RegisterNewUser(email,password,callback){
-  var random_uuid=uuidv4();
-  LoadUsers((users)=>{
-    var war=true;
-    Object.keys(users).forEach((uuid)=>{
-      var user=users[uuid];
-      if(user.email==email){
-        callback("EXIST")
+      if(user.email==email && war){
+        callback(users[uuid])
         war=false
       }
     })
     if(war){
+      callback(null)
+    }
+  })
+}
+
+//Rejestracja nowego użytkownika
+function registerNewUser(email,password,callback){
+  findUser(email,(user)=>{
+    if(user!=null){
+      callback("EXIST")
+    }else{
+      var random_uuid=uuidv4()
       var data={
+        dataRegistered:false,
         email,
-        password
+        password,
+        uuid:random_uuid,
+        userInfo:{
+          name:"",
+          surname:"",
+          age:0,
+          type:""
+        }
       }
       fs.writeFileSync(`${__dirname}/userdb/${random_uuid}.json`,JSON.stringify(data,null,4));
       callback("OK")
@@ -73,23 +84,57 @@ function RegisterNewUser(email,password,callback){
   })
 }
 
+//Update'owanie pliku użytkownika
+function registerUserData(email,password,name,surname,age,type,callback){
+  console.log(`Rejestrowanie danych użytkownika: ${email}`)
+  findUser(email,(user)=>{
+    if(user==null){
+      callback("NO_USER")
+    }
+    if(user.password==password){
+      user.userInfo={
+        name,surname,age,type
+      }
+      user.dataRegistered=true;
+      console.log(user)
+      fs.writeFileSync(`${__dirname}/userdb/${user.uuid}.json`,JSON.stringify(user,null,4));
+      callback("OK")
+    }else{
+      callback("INC_PWD")
+    }
+  })
+}
+
+//Przyjmowanie requestów logowania
 app.get('/login/', (req, res) => {
   var email=req.query.email;
   var password=req.query.password;
   console.log(`Użytkownik ${email} loguje się`)
-  checkUser(email,password,(resp)=>{
-    if(resp=="OK"){
-      res.json({resp:"ok"})
+  findUser(email,(user)=>{
+    if(user==null){
+      //Użytkownik nie istnieje
+      res.json({resp:"err"})
+    }else if(user.password==password){
+      if(user.dataRegistered){
+        //Już dane zostały pobrane wszystko ok
+        res.json({resp:"ok"})
+      }else{
+        //Wymaga podania danych (DataScreen)
+        res.json({resp:"ok_data"})
+      }
     }else{
+      //Złe hasło
       res.json({resp:"err"})
     }
   })
 })
+
+//Przyjmowanie requestów rejestracji
 app.get('/register/', (req, res) => {
   var email=req.query.email;
   var password=req.query.password;
   console.log(`Użytkownik ${email} rejestruje się`)
-  RegisterNewUser(email,password,(resp)=>{
+  registerNewUser(email,password,(resp)=>{
     if(resp=="OK"){
       res.json({resp:"ok"})
     }else{
@@ -97,10 +142,28 @@ app.get('/register/', (req, res) => {
     }
   })
 })
-app.get('/forgot_pwd/', (req, res) => {
-  res.send("ok")
+
+//Przyjmowanie requestów podawania dodatkowych danych
+app.get('/register_user_data/', (req, res) => {
+  var email=req.query.email;
+  var password=req.query.password;
+  var name=req.query.name;
+  var surname=req.query.surname;
+  var age=req.query.age;
+  var type=req.query.type;
+  registerUserData(email,password,name,surname,age,type,(resp)=>{
+    if(resp=="OK"){
+      res.json({resp:"ok"})
+    }else if(res=="NO_USER"){
+      res.send({resp:"no_user"})
+    }else{
+      res.send({resp:"err"})
+    }
+  })
+
 })
 
+//Nasłuchiwanie
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })

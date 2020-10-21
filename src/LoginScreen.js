@@ -12,12 +12,14 @@ var state={
 }
 
 function zaloguj(navigation){
-  fetch(`http://senior-plus.fly.dev/login/?password=${state.password}&email=${state.email}`)
+  fetch(`https://senior-plus.fly.dev/login/?password=${state.password}&email=${state.email}`)
       .then((response) => response.json())
       .then((json) => {
+        AsyncStorage.setItem("email",state.email)
+        AsyncStorage.setItem("password",state.password)
         if(json.resp=="ok"){
-          AsyncStorage.setItem("email",state.email)
-          AsyncStorage.setItem("password",state.password)
+          navigation.replace("Panel")
+        }else if(json.resp=="ok_data"){
           navigation.replace("Data")
         }else{
           alert("Zły login i/lub hasło!")
@@ -28,8 +30,8 @@ function zaloguj(navigation){
 }
 export default function LoginScreen({navigation}){
 
-  AsyncStorage.getItem('email').then(email=>{
-    AsyncStorage.getItem('password').then(password=>{
+  AsyncStorage.getItem('emailx').then(email=>{
+    AsyncStorage.getItem('passwordx').then(password=>{
       if(email==null || password==null){
         //Nie zalogowano
 
