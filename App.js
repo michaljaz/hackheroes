@@ -26,10 +26,11 @@ import Panel from './src/Panel';
 
 export default function App() {
     const [showRealApp , setShowRealApp] = useState(false);
+
+    // jak już skończysz
     const onSmth = ({navigation}) => {
       setShowRealApp(true);
     };
-
     // renderowanie karty do wstępu do apliakcji
     const renderItem = ({ item }) => {
       return (

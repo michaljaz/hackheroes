@@ -15,8 +15,7 @@ function rejestracja(){
       .then((response) => response.json())
       .then((json) => {
         if(json.resp=="ok"){
-          // navigation.replace("Login")
-          alert("Utworzono konto!")
+          navigation.replace("Data")
         }else{
           alert("Użytkownik już istnieje!")
         }
