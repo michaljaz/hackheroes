@@ -109,10 +109,10 @@ const styles = StyleSheet.create({
       justifyContent:"center",
       width: '80%',
 
-      shadowColor: "#000000",
+      shadowColor: "#222222",
       shadowOffset: {width: 0,height: 0},
-      shadowOpacity: 0.3,
-      shadowRadius: 7,
+      shadowOpacity: 0.7,
+      shadowRadius: 5,
       elevation: 10,
     },
     inputView:{
@@ -125,10 +125,11 @@ const styles = StyleSheet.create({
       height:55,
       justifyContent:"center",
       padding:20,
-      shadowColor: "#000000",
+      
+      shadowColor: "#222222",
       shadowOffset: {width: 0,height: 0},
-      shadowOpacity: 0.3,
-      shadowRadius: 7,
+      shadowOpacity: 0.7,
+      shadowRadius: 5,
       elevation: 10,
     },
     inputText:{

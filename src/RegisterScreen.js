@@ -82,11 +82,11 @@ const styles = StyleSheet.create({
     justifyContent:"center",
     padding:20,
 
-    shadowColor: "#000000",
-    shadowOffset: {width: 0,height: 0},
-    shadowOpacity: 0.3,
-    shadowRadius: 7,
-    elevation: 10,
+    shadowColor: "#222222",
+      shadowOffset: {width: 0,height: 0},
+      shadowOpacity: 0.7,
+      shadowRadius: 5,
+      elevation: 10,
   },
   inputText:{
     height:50,
