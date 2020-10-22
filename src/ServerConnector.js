@@ -1,31 +1,11 @@
-import {NetInfo,Platform} from '@react-native-community/netinfo';
+import NetInfo from "@react-native-community/netinfo";
+
 
 //callback: true,false
 function IsOnline(callback){
-  if (Platform.OS === "android") {
-    NetInfo.isConnected.fetch().then(isConnected => {
-      if (isConnected) {
-        callback(true)
-      } else {
-        callback(false);
-      }
-    });
-  } else {
-    NetInfo.isConnected.addEventListener(
-      "connectionChange",
-      (isConnected) => {
-        NetInfo.isConnected.removeEventListener(
-          "connectionChange",
-          this.handleFirstConnectivityChange
-        );
-        if (isConnected === false) {
-          callback(false)
-        } else {
-          callback(true)
-        }
-      }
-    )
-  }
+  NetInfo.fetch().then(resp=>{
+    callback(resp.isConnected)
+  })
 }
 
 //callback: "ok","ok_data","err"
