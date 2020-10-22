@@ -42,27 +42,24 @@ function Register(email,password,callback){
   fetch(`https://senior-plus.fly.dev/register/?password=${password}&email=${email}`)
   .then((response) => response.json())
   .then((json) => {
-    alert(json.resp)
     callback(json.resp)
   })
 }
 
 //callback: user,"err"
-function GetUserData(email,password,callback){
+function GetUser(email,password,callback){
   fetch(`https://senior-plus.fly.dev/get_data/?password=${password}&email=${email}`)
     .then((response) => response.json())
     .then((json) => {
-      alert(json.resp)
       callback(json.resp)
     })
 }
 
 //callback: "ok","err"
-function SetUserData(email,password,data,callback){
-  fetch(`https://senior-plus.fly.dev/get_data/?password=${password}&email=${email}`)
+function SetUserData(email,password,user,callback){
+  fetch(`https://senior-plus.fly.dev/get_data/?user=${JSON.stringify(user)}`)
     .then((response) => response.json())
     .then((json) => {
-      alert(json.resp)
       callback(json.resp)
     })
 }
