@@ -48,7 +48,7 @@ function Register(email,password,callback){
 }
 
 //callback: user,"err"
-function GetUser(email,password,callback){
+function GetUserData(email,password,callback){
   fetch(`https://senior-plus.fly.dev/get_data/?password=${password}&email=${email}`)
     .then((response) => response.json())
     .then((json) => {
