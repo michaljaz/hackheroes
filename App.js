@@ -23,6 +23,7 @@ import DataScreen from './src/DataScreen';
 const Stack = createStackNavigator();
 
 import Panel from './src/Panel';
+import PeopleScreen from './src/PeopleScreen';
 
 export default function App() {
     const [showRealApp , setShowRealApp] = useState(false);
@@ -73,6 +74,7 @@ export default function App() {
             <Stack.Screen name="Rejestracja" component={RegisterScreen} />
             <Stack.Screen name="Panel" component={Panel} />
             <Stack.Screen name="Data" component={DataScreen} />
+            <Stack.Screen name="Znajomi" component={PeopleScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       )

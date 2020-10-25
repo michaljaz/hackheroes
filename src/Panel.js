@@ -21,6 +21,7 @@ import HomeScreen from './HomeScreen';
 import MedicineScreen from './MedicineScreen';
 import SettingsScreen from './SettingsScreen';
 import ContactScreen from './ContactScreen';
+import PeopleScreen from './PeopleScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -47,6 +48,10 @@ export default function Panel(){
             return (
               <Ionicons name={'ios-medkit'} size={size} color={color} />
             );
+          } else if (route.name === 'ios-people') {
+            return (
+              <Ionicons name={'ios-people'} size={size} color={color} />
+            );
           }
         },
       })}
@@ -58,6 +63,7 @@ export default function Panel(){
       <Tab.Screen name="Leki" component={MedicineScreen} options={{ tabBarBadge: null }} />
       <Tab.Screen name="Dom" component={HomeScreen} options={{ tabBarBadge: null }} />
       <Tab.Screen name="Kontakt" component={ContactScreen} options={{ tabBarBadge: null }} />
+      <Tab.Screen name="Znajomi" component={PeopleScreen} options={{ tabBarBadge: null }} />
       <Tab.Screen name="Ustawienia" component={SettingsScreen} options={{ tabBarBadge: null }} />
     </Tab.Navigator>
   );
