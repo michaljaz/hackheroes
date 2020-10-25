@@ -74,7 +74,6 @@ export default function App() {
             <Stack.Screen name="Rejestracja" component={RegisterScreen} />
             <Stack.Screen name="Panel" component={Panel} />
             <Stack.Screen name="Data" component={DataScreen} />
-            <Stack.Screen name="Znajomi" component={PeopleScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       )
