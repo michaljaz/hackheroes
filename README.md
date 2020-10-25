@@ -13,6 +13,7 @@ Hackheroes prołdżekt
 	Michał Jażdżyk
 </li>
 <br>
+
 > **_WAŻNE:_**  Aplikacja łączy się do serwera: <a href="https://github.com/michaljaz/hackheroes-server"> https://github.com/michaljaz/hackheroes-server </a>
 ><br>
 >Testowe konto w aplikacji: email=test,hasło=test
