@@ -25,8 +25,17 @@ export const COLORS = {
     pale_green: '#00FF40',
     lavender: '#efc0fe',
     hot_pink: '#FF69B4',
+    
+    
     aquamarine: '#7FFFD4',
     amaranth: '#E52B50',
+
+    vivid_violet: '#735cb0',
+    vivid_blue: "#00a4ef",
+    vivid_green: '#6ab43e',
+    vivid_orange: '#e89d41',
+    vivid_pink: '#fd4084',
+    
 
 }
 
