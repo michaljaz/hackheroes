@@ -45,6 +45,8 @@ export default function DataScreen({navigation}){
             source={require('../assets/seniorPlus.png')}
         />
       </View>
+      <Text style={{fontWeight: 'bold', fontSize: 25,marginBottom: 50, color: '#444444'}}> Uzupełnienie danych: </Text>
+
       <View style={styles.inputView} >
         <TextInput
           style={styles.inputText}

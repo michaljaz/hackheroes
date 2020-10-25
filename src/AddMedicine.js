@@ -6,9 +6,30 @@ import { LinearGradient } from 'expo-linear-gradient';
 import SwitchSelector from 'react-native-switch-selector';
 import { AsyncStorage } from 'react-native';
 
+import {COLORS} from '../assets/colors';
+import TimePicker from 'react-native-simple-time-picker';
+import { Button } from 'react-native-paper';
+
 const Stack = createStackNavigator();
 
-export default function AddMedicineScreen() {
+
+var lek={
+  key: "",
+  name: "",
+  when: "",
+  color: "",
+  koment: "",
+}
+
+function sendData(){
+  // tymczasowo zmiana ekranu, bo coś nie działa
+  console.log("to be added...")
+  alert("Lek dodano pomyślnie!")
+  // wysyłasz tak
+  // nazwe, kiedy, koment
+  // random generate kolor & key
+}
+export default function AddMedicineScreen(nav) {
   return (
     <Stack.Navigator>
     <Stack.Screen
@@ -21,48 +42,45 @@ export default function AddMedicineScreen() {
 }
 
 function content({navigation}){
+  const [hour,setHour] = useState(7);
+  const [minute,setMinute] = useState(45);
+ 
+  const kolors = Object.values(COLORS);
+
+  const onChange = (hours,minutes) => {
+    setHour(hours);
+    setMinute(minutes);
+    lek.when = hours+"."+minutes;
+    console.log(lek.when);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.inputView} >
         <TextInput
           style={styles.inputText}
-          placeholder="Imię..."
+          placeholder="Nazwa"
           placeholderTextColor="#444444"
-          onChangeText={text => {state.name=text}}/>
+          onChangeText={text => {lek.name=text}}/>
       </View>
 
       <View style={styles.inputView} >
         <TextInput
           style={styles.inputText}
-          placeholder="Nazwisko..."
+          placeholder="Opis"
           placeholderTextColor="#444444"
-          onChangeText={text => {state.surname=text}}
+          onChangeText={text => {lek.koment=text}}
           />
       </View>
+      <Text style={styles.whenLek}>Przypomnienie o godzinie  {hour}:{minute}</Text>
+      <TimePicker
+          selectedHours={hour}
+          selectedMinutes={minute}
+          onChange={(hours, minutes) => onChange(hours,minutes)}
+        />
 
-      <View style={styles.inputView} >
-        <TextInput
-          style={styles.inputText}
-          placeholder="Wiek..."
-          placeholderTextColor="#444444"
-          onChangeText={text => {state.age=text}}
-          />
-      </View>
-      <SwitchSelector
-        style={styles.Switch}
-        initial={0}
-        borderColor={'#eeeeee'}
-        selectedColor={'#ffffff'}
-        buttonColor={'#2A2D40'}
-        animationDuration={200}
-        onPress={value => {state.type=value}}
-        options={[
-          { label: "Senior", value: "senior" },
-          { label: "Junior", value: "junior" }
-        ]}
-      />
       <TouchableOpacity style={styles.loginBtnD} onPress={()=>{sendData({navigation})}}>
-        <Text style={styles.loginTextD}>Dalej</Text>
+        <Text style={styles.loginTextD} >Dodaj</Text>
       </TouchableOpacity>
 
     </View>
@@ -76,50 +94,26 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
 
     },
-    logo:{
-        flex: 1,
-        top: '5%',
-        color: '#444444',
-    },
-    Switch:{
-      borderRadius:25,
-      marginBottom: 30,
-      justifyContent:"center",
-      width: '80%',
-
-      shadowColor: "#222222",
-      shadowOffset: {width: 0,height: 0},
-      shadowOpacity: 0.7,
-      shadowRadius: 5,
-      elevation: 10,
-    },
     inputView:{
       width:"80%",
       backgroundColor:"#ffffff",
-      borderRadius:25,
+      borderBottomColor: '#444444',
+      borderBottomWidth: 5,
       marginBottom: 30,
       height:55,
       justifyContent:"center",
-      padding:20,
+      padding:10,
+
       
-      shadowColor: "#222222",
-      shadowOffset: {width: 0,height: 0},
-      shadowOpacity: 0.7,
-      shadowRadius: 5,
-      elevation: 10,
+      
     },
     inputText:{
       height:50,
       fontWeight: 'bold',
       fontSize: 20,
-      color: "#444444"
+      color: "#000000"
     },
-    forgot:{
-      color:"#444444",
-      fontSize: 15,
-      marginTop: -15,
-      marginBottom: '8%',
-    },
+    
     loginBtn:{
       width:"60%",
       backgroundColor:"#399fff",
@@ -138,17 +132,12 @@ const styles = StyleSheet.create({
       justifyContent:"center",
       marginBottom: '14%',
     },
-    loginText:{
+    loginTextD:{
       fontWeight: 'bold',
       color:"#444444",
       fontSize: 24,
     },
-    loginTextD:{
-      fontWeight: 'bold',
-      color:"#444444",
-      fontSize: 18,
-    },
-    block:{
-        fontSize:50,
+    whenLek: {
+      fontSize: 20,
     }
   });

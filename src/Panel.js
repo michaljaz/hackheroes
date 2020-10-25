@@ -29,7 +29,7 @@ const Tab = createBottomTabNavigator();
 export default function Panel(){
   return(
     <Tab.Navigator
-      initialRouteName="Dom"
+      initialRouteName="Leki"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           if (route.name === 'Dom') {
@@ -54,7 +54,7 @@ export default function Panel(){
             );
           } else if (route.name === 'Nowy') {
             return (
-              <Ionicons name={'ios-contacts'} size={size} color={color} />
+              <Ionicons name={'ios-add-circle'} size={size} color={color} />
             );
           }
         },
@@ -68,7 +68,6 @@ export default function Panel(){
       <Tab.Screen name="Leki" component={MedicineScreen} options={{ tabBarBadge: null }} />
       <Tab.Screen name="Rodzina" component={PeopleScreen} options={{ tabBarBadge: null }} />
       <Tab.Screen name="Kontakt" component={ContactScreen} options={{ tabBarBadge: null }} />
-      <Tab.Screen name="Ustawienia" component={SettingsScreen} options={{ tabBarBadge: null }} />
     </Tab.Navigator>
   );
 }

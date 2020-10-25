@@ -28,16 +28,12 @@ export default function MedicineScreen() {
 
 
 const allMeds = [
-  {key: '1', name: 'Ibuprom', when: '8.00', color:COLORS.vivid_blue, koment: 'lorem ipsum dolor sit amet sret hamlet'},
-  {key: '2', name: 'Ibuprom 50mg', when: '8.00', color:COLORS.yellow_nice, koment: 'lorem ipsum dolor sit amet sret hamlet'},
-  {key: '3', name: 'Ibuprom', when: '8.00', color:COLORS.vivid_green, koment: 'lorem ipsum dolor sit amet sret hamlet'},
-  {key: '4', name: 'Ibuprom', when: '8.00', color:COLORS.pale_green, koment: 'lorem ipsum dolor sit amet sret hamlet'},
-  {key: '5', name: 'Ibuprom', when: '8.00', color:COLORS.vivid_orange, koment: 'lorem ipsum dolor sit amet sret hamlet'},
-  {key: '6', name: 'Ibuprom', when: '8.00', color:COLORS.hot_pink, koment: 'lorem ipsum dolor sit amet sret hamlet'},
-  {key: '7', name: 'Ibuprom', when: '8.00', color:COLORS.aquamarine, koment: 'lorem ipsum dolor sit amet sret hamlet'},
-  {key: '8', name: 'Ibuprom', when: '8.00', color:COLORS.vivid_pink, koment: 'lorem ipsum dolor sit amet sret hamlet'},
-  {key: '9', name: 'Ibuprom', when: '8.00', color:COLORS.vivid_violet, koment: 'lorem ipsum dolor sit amet sret hamlet'},
-  {key: '20', name: 'Ibuprom', when: '8.00', color:COLORS.amaranth, koment: 'lorem ipsum dolor sit amet sret hamlet'},
+  {key: '1', name: 'Witamina C', when: '8.00', color:COLORS.vivid_blue, koment: '2 tabletki, popić wodą'},
+  {key: '2', name: 'Acerola', when: '8.15', color:COLORS.amaranth, koment: 'popić wodą, ważne'},
+  {key: '3', name: 'Artresan 1', when: '10.00', color:COLORS.vivid_green, koment: 'Kolana, powoli smarować'},
+  {key: '4', name: 'Apetizer', when: '14.00', color:COLORS.pale_green, koment: 'Przed obiadem'},
+  {key: '5', name: 'Nurofen 2', when: '17.00', color:COLORS.vivid_orange, koment: 'lorem ipsum dolor sit amet sret hamlet'},
+  {key: '6', name: 'Witamina C,D', when: '20.00', color:COLORS.material_blue, koment: 'Przed snem, popić wodą'},
 ];
 
 
@@ -58,8 +54,8 @@ const Med = function(data) {
         
         
       <Text style={styles.title}> {data.name}</Text>
-      <Text style={{ margin: 10, textAlign: 'center', textDecorationLine:'underline',}}> Przyjmowany o {data.when} </Text>
-      <Text style={{fontWeight: 'normal'}}> {data.koment} </Text>
+      <Text style={{ margin: 10, textAlign: 'center',fontSize: 22}}> Przyjmowany o {data.when} </Text>
+      <Text style={{fontWeight: 'normal',top: 5,}}> {data.koment} </Text>
     </View></TouchableOpacity>
   );
 }
@@ -90,13 +86,13 @@ function content() {
 const styles = StyleSheet.create({
 
   title: {
-    fontSize: 25,
+    fontSize: 28,
     fontWeight: 'bold',
+    textDecorationLine: 'underline',
   },
   container: {
     width: '100%',
     alignContent: "center",
-    marginBottom: 10,
   },
  medContainer:{
    left: '5%',
