@@ -17,11 +17,11 @@ import AppIntroSlider from 'react-native-app-intro-slider'; // sliderek do tutor
 
 //Zakładki
 
-import HomeScreen from './HomeScreen';
 import MedicineScreen from './MedicineScreen';
 import SettingsScreen from './SettingsScreen';
 import ContactScreen from './ContactScreen';
 import PeopleScreen from './PeopleScreen';
+import AddMedicineScreen from './AddMedicine';
 
 const Tab = createBottomTabNavigator();
 
@@ -48,9 +48,13 @@ export default function Panel(){
             return (
               <Ionicons name={'ios-medkit'} size={size} color={color} />
             );
-          } else if (route.name === 'ios-people') {
+          } else if (route.name === 'Rodzina') {
             return (
-              <Ionicons name={'ios-people'} size={size} color={color} />
+              <Ionicons name={'ios-contacts'} size={size} color={color} />
+            );
+          } else if (route.name === 'Nowy') {
+            return (
+              <Ionicons name={'ios-contacts'} size={size} color={color} />
             );
           }
         },
@@ -60,10 +64,10 @@ export default function Panel(){
         inactiveTintColor: '#333333',
       }}
     >
+      <Tab.Screen name="Nowy" component={AddMedicineScreen} options={{ tabBarBadge: null }} />
       <Tab.Screen name="Leki" component={MedicineScreen} options={{ tabBarBadge: null }} />
-      <Tab.Screen name="Dom" component={HomeScreen} options={{ tabBarBadge: null }} />
+      <Tab.Screen name="Rodzina" component={PeopleScreen} options={{ tabBarBadge: null }} />
       <Tab.Screen name="Kontakt" component={ContactScreen} options={{ tabBarBadge: null }} />
-      <Tab.Screen name="Znajomi" component={PeopleScreen} options={{ tabBarBadge: null }} />
       <Tab.Screen name="Ustawienia" component={SettingsScreen} options={{ tabBarBadge: null }} />
     </Tab.Navigator>
   );

@@ -5,46 +5,24 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { LinearGradient } from 'expo-linear-gradient';
 import SwitchSelector from 'react-native-switch-selector';
 import { AsyncStorage } from 'react-native';
+
 const Stack = createStackNavigator();
 
-var state={
-  name:"",
-  surname:"",
-  age:"",
-  type:"",
-}
-function sendData({navigation}){
-  // tymczasowo zmiana ekranu, bo coś nie działa
-  navigation.replace("Panel")
-  
-  AsyncStorage.getItem("email").then(email=>{
-    AsyncStorage.getItem("password").then(password=>{
-      fetch(`https://senior-plus.fly.dev/register_user_data/?password=${password}&email=${email}&name=${state.name}&surname=${state.surname}&age=${state.age}&type=${state.type}`)
-          .then((response) => response.json())
-          .then((json) => {
-            if(json.resp=="ok"){
-              navigation.replace("Panel")
-            }else if(json.resp=="no_user"){
-              alert("Twoje dane zostały już wprowadzone")
-            }else if(json.resp=="err"){
-              alert("Błąd")
-            }
-          },
-          (error) => { alert(error)}
-          )
-    })
-  })
+export default function AddMedicineScreen() {
+  return (
+    <Stack.Navigator>
+    <Stack.Screen
+      name="Home"
+      component={content}
+      options={{ title: 'Dodaj Lek' }}
+    />
+  </Stack.Navigator>
+  );
 }
 
-
-export default function DataScreen({navigation}){
+function content({navigation}){
   return (
     <View style={styles.container}>
-      <View style={styles.logo}>
-        <Image
-            source={require('../assets/seniorPlus.png')}
-        />
-      </View>
       <View style={styles.inputView} >
         <TextInput
           style={styles.inputText}

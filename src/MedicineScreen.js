@@ -5,8 +5,11 @@ import {LinearGradient} from 'expo-linear-gradient';
 import { ScrollView, TouchableOpacity, TouchableHighlight  } from 'react-native-gesture-handler';
 import SwitchSelector from 'react-native-switch-selector';
 import { COLORS } from '../assets/colors';
+import { Ionicons  } from '@expo/vector-icons'; // ikonkki
 
 import { GetUserData, SetUserData} from './ServerConnector';
+import { add } from 'react-native-reanimated';
+import { Button } from 'react-native-paper';
 
 
 const Stack = createStackNavigator();
@@ -14,11 +17,6 @@ const Stack = createStackNavigator();
 export default function MedicineScreen() {
   return (
     <Stack.Navigator>
-    <Stack.Screen
-      name="Home"
-      component={content}
-      options={{ title: 'Leki' }}
-    />
     <Stack.Screen
       name="Home"
       component={content}
@@ -41,23 +39,16 @@ const allMeds = [
   {key: '9', name: 'Ibuprom', when: '8.00', color:COLORS.vivid_violet, koment: 'lorem ipsum dolor sit amet sret hamlet'},
   {key: '20', name: 'Ibuprom', when: '8.00', color:COLORS.amaranth, koment: 'lorem ipsum dolor sit amet sret hamlet'},
 ];
-/*
-<Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={()=>{console.log("cloe")}}
-      > 
-        <Text> Czy na pewno chcesz usunac lek?</Text>
-      </Modal>*/
 
 
+
+// karta leku - render
 const Med = function(data) {
   return(
     <TouchableOpacity onPress={ ()=>{
       Alert.alert( data.name,'Czy na pewno chcesz usunąć ten lek? Jest to nieodwracalne! ',
         [
-          {text: 'anuluj',onPress: () => console.log('Ask me later pressed')},
+          {text: 'anuluj'},
           {text: 'usuń',onPress: () => console.log('Cancel Pressed'), style: 'destructive'},
         ],
         { cancelable: false }
@@ -74,17 +65,16 @@ const Med = function(data) {
 }
 
 
-function addMed() {
-  
+// funkcja do usunięcia leku o danym id z konta.
+function delMed(data) {
+  return( <View></View>);
 }
 
-// zawartosc karty
+
+// zawartosc ekranu
 function content() {
   return (
-    <View style={styles.container} >
-      <TouchableOpacity onPress={()=>console.log("test")} style={styles.medContainer} onBlur={true}>
-        <Text style={styles.inputText}>Proba 1234</Text>
-      </TouchableOpacity>
+    <View style={styles.container}>
       <FlatList
         style={styles.container}
         data={ allMeds }
@@ -106,7 +96,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     alignContent: "center",
-    marginBottom: 65,
+    marginBottom: 10,
   },
  medContainer:{
    left: '5%',
